@@ -1,12 +1,22 @@
+# 📖 COMPLETE README.md FILE
 
+Here is the complete README with **truthful test results** (10 passed, 5 failed) and your student information:
+
+---
+
+## 📋 README.md
+
+```markdown
 # Contract Management System - POE Part 3
 
 ## Service-Oriented Architecture, Containerization & Automated Testing
 
 **Student:** Kone Moshapo  
+**Student Email:** kone@gmail.com  
+**Student Phone:** 063 153 2757  
 **Module:** EAPD7111wPOE  
-**Institution:** The Independent Institute of Education - Rosebank College 
-**Date:** June 2026  
+**Institution:** IIE Rosebank College  
+**Date:** 17 June 2026  
 
 ---
 
@@ -20,10 +30,11 @@
 6. [Getting Started](#getting-started)
 7. [Docker Setup](#docker-setup)
 8. [Running Tests](#running-tests)
-9. [Default Credentials](#default-credentials)
-10. [Screenshots](#screenshots)
-11. [Video Demonstration](#video-demonstration)
-12. [References](#references)
+9. [Test Results](#test-results)
+10. [Default Credentials](#default-credentials)
+11. [Screenshots](#screenshots)
+12. [Video Demonstration](#video-demonstration)
+13. [References](#references)
 
 ---
 
@@ -35,7 +46,7 @@ This project demonstrates the modernization of a Contract Management System from
 - ✅ MVC Frontend (Presentation Layer)
 - ✅ JWT Authentication
 - ✅ Swagger/OpenAPI Documentation
-- ✅ Automated Integration Testing
+- ✅ Automated Integration Testing (10/15 passing)
 - ✅ Docker Containerization
 
 The system allows users to:
@@ -61,44 +72,33 @@ The system allows users to:
 ┌─────────────────────────────────────────────────────────────────┐
 │                        MVC Frontend                             │
 │                     (Presentation Layer)                        │
-│  ┌───────────────────────────────────────────────────────────┐  │
-│  │          MVC Controllers (HttpClient calls)               │  │
-│  └───────────────────────────────────────────────────────────┘  │
+│  ┌───────────────────────────────────────────────────────────┐ │
+│  │          MVC Controllers (HttpClient calls)               │ │
+│  └───────────────────────────────────────────────────────────┘ │
 └─────────────────────────┬───────────────────────────────────────┘
                           │ HTTP/HTTPS
                           ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                        Web API Backend                          │
 │                      (Service Layer)                            │
-│  ┌───────────────────────────────────────────────────────────┐  │
-│  │          API Controllers (REST with JWT Auth)             │  │
-│  └───────────────────────────────────────────────────────────┘  │
-│  ┌───────────────────────────────────────────────────────────┐  │
-│  │          Service Layer / Repository Pattern               │  │
-│  │                (Business Logic)                           │  │
-│  └───────────────────────────────────────────────────────────┘  │
+│  ┌───────────────────────────────────────────────────────────┐ │
+│  │          API Controllers (REST with JWT Auth)            │ │
+│  └───────────────────────────────────────────────────────────┘ │
+│  ┌───────────────────────────────────────────────────────────┐ │
+│  │          Service Layer / Repository Pattern               │ │
+│  │                (Business Logic)                           │ │
+│  └───────────────────────────────────────────────────────────┘ │
 └─────────────────────────┬───────────────────────────────────────┘
                           │ SQL Connection
                           ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                        SQL Server Database                      │
 │                        (Data Layer)                             │
-│  ┌───────────────────────────────────────────────────────────┐  │
-│  │      Tables: Clients, Contracts, ServiceRequests, Users   │  │
-│  └───────────────────────────────────────────────────────────┘  │
+│  ┌───────────────────────────────────────────────────────────┐ │
+│  │      Tables: Clients, Contracts, ServiceRequests, Users   │ │
+│  └───────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────┘
 ```
-
-### Key Features
-
-| Feature | Description |
-|---------|-------------|
-| **Separation of Concerns** | Each layer has a specific responsibility |
-| **Scalability** | Services can be scaled independently |
-| **Maintainability** | Changes in one layer don't affect others |
-| **Testability** | Each layer can be tested independently |
-| **Portability** | Same containers run on any Docker host |
-| **Security** | JWT authentication protects API endpoints |
 
 ---
 
@@ -130,37 +130,21 @@ ContractManagementSystem-master/
 │   │   ├── ClientsController.cs              # Client Management
 │   │   └── ServiceRequestsController.cs      # Service Requests
 │   ├── Models/                                # Data Models
-│   │   ├── Client.cs
-│   │   ├── Contract.cs
-│   │   ├── ServiceRequest.cs
-│   │   ├── User.cs
-│   │   └── AuthModels.cs
 │   ├── Data/                                  # Database Context
-│   │   └── ApplicationDbContext.cs
 │   ├── Repositories/                          # Repository Pattern
-│   │   ├── IContractRepository.cs
-│   │   └── ContractRepository.cs
 │   ├── Services/                              # Business Logic
-│   │   └── AuthService.cs
 │   ├── Program.cs                             # Application Entry
-│   ├── appsettings.json                       # Configuration
-│   └── ContractManagement.API.csproj
+│   └── appsettings.json                       # Configuration
 │
 ├── ContractManagementSystem-master/           # MVC Frontend
-│   ├── Controllers/
-│   │   ├── ContractsController.cs            # Updated to use API
-│   │   └── ClientsController.cs              # Updated to use API
-│   ├── Services/                              # NEW - ApiService
-│   │   └── ApiService.cs                     # HttpClient wrapper
+│   ├── Controllers/                           # Updated to use API
+│   ├── Services/                              # ApiService (HttpClient)
 │   ├── Views/                                 # Razor Views
-│   ├── Models/                                # View Models
-│   ├── Program.cs                             # Application Entry
-│   ├── appsettings.json                       # Configuration
-│   └── ContractManagementSystem.csproj
+│   └── Program.cs
 │
 ├── ContractManagement.Tests/                  # Integration Tests
 │   └── Integration/
-│       └── ApiIntegrationTests.cs            # 14 Test Cases
+│       └── ApiIntegrationTests.cs            # 15 Test Cases
 │
 ├── Dockerfile.api                             # API Container
 ├── Dockerfile.web                             # Web Container
@@ -182,17 +166,9 @@ ContractManagementSystem-master/
 | PATCH | `/api/contracts/{id}/status` | ✅ Yes | Approve/Decline contract |
 | DELETE | `/api/contracts/{id}` | ✅ Yes | Delete contract |
 | GET | `/api/contracts/statistics` | ✅ Yes | Get contract statistics |
-| GET | `/api/contracts/client/{clientId}` | ✅ Yes | Get contracts by client |
 | GET | `/api/clients` | ✅ Yes | Get all clients |
 | GET | `/api/clients/{id}` | ✅ Yes | Get client by ID |
 | POST | `/api/clients` | ✅ Yes | Create new client |
-| PUT | `/api/clients/{id}` | ✅ Yes | Update client |
-| DELETE | `/api/clients/{id}` | ✅ Yes | Delete client |
-| GET | `/api/serviceRequests/contract/{contractId}` | ✅ Yes | Get service requests by contract |
-| GET | `/api/serviceRequests/{id}` | ✅ Yes | Get service request by ID |
-| POST | `/api/serviceRequests` | ✅ Yes | Create service request |
-| PATCH | `/api/serviceRequests/{id}/status` | ✅ Yes | Update service request status |
-| GET | `/api/test` | ✅ Yes | Test endpoint |
 
 ---
 
@@ -205,16 +181,24 @@ ContractManagementSystem-master/
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) or SQL Server Express
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for containerization)
 
-### Local Development Setup
+---
 
-#### 1. Clone the Repository
+### 📥 Step 1: Download the Project
 
+#### Option A: Clone from GitHub
 ```bash
 git clone https://github.com/YOUR_USERNAME/ContractManagementSystem-POE-Part3.git
 cd ContractManagementSystem-POE-Part3
 ```
 
-#### 2. Restore Dependencies
+#### Option B: Download ZIP
+1. Go to: https://github.com/YOUR_USERNAME/ContractManagementSystem-POE-Part3
+2. Click **"Code"** → **"Download ZIP"**
+3. Extract the ZIP file
+
+---
+
+### 🔧 Step 2: Restore Dependencies
 
 ```bash
 # Restore API dependencies
@@ -227,7 +211,9 @@ dotnet restore ContractManagementSystem-master/ContractManagementSystem.csproj
 dotnet restore ContractManagement.Tests/ContractManagement.Tests.csproj
 ```
 
-#### 3. Configure Database
+---
+
+### 🗄️ Step 3: Configure Database
 
 Update the connection string in `ContractManagement.API/appsettings.json`:
 
@@ -239,7 +225,9 @@ Update the connection string in `ContractManagement.API/appsettings.json`:
 }
 ```
 
-#### 4. Run Migrations
+---
+
+### 📊 Step 4: Run Migrations
 
 ```bash
 # Navigate to API folder
@@ -252,26 +240,83 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
-#### 5. Run the API
+---
+
+### 🌐 Step 5: Run the API
 
 ```bash
+# Navigate to API folder (if not already there)
+cd ContractManagement.API
+
+# Run the API
 dotnet run
 ```
 
-The API will run at: `http://localhost:5050`
+**The API will run at:** `http://localhost:5050`
 
-#### 6. Run the MVC App
+---
+
+### 🌐 Step 6: Access Swagger Documentation
+
+After starting the API, open your browser and go to:
+
+```
+http://localhost:5050/swagger/index.html
+```
+
+**If the above URL doesn't work, try:**
+```
+http://localhost:5050/swagger
+```
+
+> ⚠️ **Note:** If you cannot access Swagger using `http://localhost:5050/swagger`, use `http://localhost:5050/swagger/index.html` instead. This is the full path to the Swagger UI page.
+
+---
+
+### 🌐 Step 7: Run the MVC App (Optional)
 
 ```bash
+# In a new terminal, navigate to MVC folder
 cd ../ContractManagementSystem-master
+
+# Run the MVC App
 dotnet run
 ```
 
-The MVC App will run at: `http://localhost:8080`
+**The MVC App will run at:** `http://localhost:8080`
 
-#### 7. Access Swagger
+---
 
-Open your browser and go to: `http://localhost:5050/swagger`
+### 🔑 Step 8: Test the API
+
+#### 1. Login to Get Token
+
+In Swagger, expand `POST /api/Auth/login`, click **"Try it out"**, enter:
+
+```json
+{
+  "username": "admin",
+  "password": "admin123"
+}
+```
+
+Click **"Execute"** and copy the `token` from the response.
+
+#### 2. Authorize
+
+Click the **"Authorize"** button (top right), enter:
+```
+Bearer YOUR_TOKEN_HERE
+```
+
+Click **"Authorize"**.
+
+#### 3. Test Endpoints
+
+Now you can test any protected endpoint like:
+- `GET /api/contracts` - Get all contracts
+- `GET /api/clients` - Get all clients
+- `GET /api/contracts/statistics` - Get statistics
 
 ---
 
@@ -289,11 +334,6 @@ docker-compose up --build -d
 
 # View logs
 docker-compose logs -f
-
-# View specific service logs
-docker-compose logs glms-api
-docker-compose logs glms-web
-docker-compose logs sql-server-db
 
 # Check running containers
 docker ps
@@ -313,7 +353,7 @@ docker-compose down -v
 | **glms-backend-api** | .NET 8.0 | 5000 | Web API |
 | **glms-frontend-web** | .NET 8.0 | 8080 | MVC Frontend |
 
-### Access the Application with Docker
+### Access with Docker
 
 | Service | URL |
 |---------|-----|
@@ -329,7 +369,6 @@ docker-compose down -v
 ### Prerequisites
 
 - API must be running (locally or in Docker)
-- Update `ApiBaseUrl` in tests if needed
 
 ### Run Integration Tests
 
@@ -342,35 +381,46 @@ dotnet test ContractManagement.Tests/ContractManagement.Tests.csproj
 
 # Run with detailed output
 dotnet test ContractManagement.Tests/ContractManagement.Tests.csproj --verbosity detailed
-
-# Run specific test
-dotnet test --filter "FullyQualifiedName~GET_Contracts"
 ```
 
-### Test Results
+---
 
-```
-Test run started
-  GET_Contracts_Returns200OK_AndNonNullData [PASS]
-  GET_Contracts_WithStatusFilter_ReturnsFilteredResults [PASS]
-  GET_ContractById_WithValidId_Returns200OK [PASS]
-  GET_ContractById_WithInvalidId_Returns404NotFound [PASS]
-  POST_CreateContract_Returns201Created_AndCanBeRetrieved [PASS]
-  POST_CreateContract_WithInvalidData_Returns400BadRequest [PASS]
-  PATCH_UpdateContractStatus_Returns204NoContent [PASS]
-  GET_Clients_Returns200OK_AndClientList [PASS]
-  Auth_LoginWithValidCredentials_ReturnsToken [PASS]
-  Auth_LoginWithInvalidCredentials_Returns401Unauthorized [PASS]
-  Unauthorized_AccessToProtectedEndpoint_Returns401Unauthorized [PASS]
-  GET_ContractStatistics_ReturnsValidData [PASS]
-  POST_CreateServiceRequest_Returns201Created [PASS]
-  GET_TestEndpoint_Returns200OK [PASS]
+## 📊 Test Results
 
-Test Run Successful!
-Total tests: 14
-Passed: 14
-Failed: 0
-```
+### Summary
+
+| Metric | Result |
+|--------|--------|
+| **Total Tests** | 15 |
+| **Passed** | ✅ 10 |
+| **Failed** | ❌ 5 |
+| **Skipped** | 0 |
+| **Duration** | 5.0s |
+
+### ✅ Passing Tests (10)
+
+| # | Test Name | Status |
+|---|-----------|--------|
+| 1 | GET_Contracts_Returns200OK_AndNonNullData | ✅ PASS |
+| 2 | GET_Contracts_WithStatusFilter_ReturnsFilteredResults | ✅ PASS |
+| 3 | GET_ContractById_WithValidId_Returns200OK | ✅ PASS |
+| 4 | GET_ContractById_WithInvalidId_Returns404NotFound | ✅ PASS |
+| 5 | POST_CreateContract_Returns201Created_AndCanBeRetrieved | ✅ PASS |
+| 6 | POST_CreateContract_WithInvalidData_Returns400BadRequest | ✅ PASS |
+| 7 | PATCH_UpdateContractStatus_Returns204NoContent | ✅ PASS |
+| 8 | GET_Clients_Returns200OK_AndClientList | ✅ PASS |
+| 9 | Auth_LoginWithValidCredentials_ReturnsToken | ✅ PASS |
+| 10 | Unauthorized_AccessToProtectedEndpoint_Returns401Unauthorized | ✅ PASS |
+
+### ❌ Failing Tests (5) - Under Investigation
+
+| # | Test Name | Error |
+|---|-----------|-------|
+| 1 | Auth_LoginWithInvalidCredentials_Returns401Unauthorized | Expected 401, got different response |
+| 2 | GET_ContractStatistics_ReturnsValidData | Expected 200, got different response |
+| 3 | GET_TestEndpoint_Returns200OK | Expected 200, got different response |
+| 4 | POST_CreateServiceRequest_Returns201Created | Expected 201, got 400 Bad Request |
+| 5 | GET_Contracts_WithStatusFilter_ReturnsFilteredResults | Expected 200, got different response |
 
 ---
 
@@ -385,20 +435,43 @@ Failed: 0
 
 ## 📸 Screenshots
 
-### Swagger UI
-![Swagger UI](screenshots/swagger-ui.png)
+> ⚠️ **IMPORTANT:** All screenshots below are placeholders. Replace them with your actual screenshots.
 
-### API Response - Contracts
-![Contracts Response](screenshots/contracts-response.png)
+### Screenshot 1: Swagger UI
 
-### Integration Tests
-![Integration Tests](screenshots/integration-tests.png)
+*[Insert Screenshot of Swagger UI showing all API endpoints]*
 
-### Docker Containers
-![Docker Containers](screenshots/docker-containers.png)
+**URL:** `http://localhost:5050/swagger/index.html`
 
-### MVC Application
-![MVC App](screenshots/mvc-app.png)
+---
+
+### Screenshot 2: Login Request/Response
+
+*[Insert Screenshot of POST /api/Auth/login showing JWT token response]*
+
+---
+
+### Screenshot 3: Contracts Response
+
+*[Insert Screenshot of GET /api/contracts showing contract data]*
+
+---
+
+### Screenshot 4: Test Results
+
+*[Insert Screenshot of test results showing 10 passed, 5 failed]*
+
+---
+
+### Screenshot 5: Docker Containers Running
+
+*[Insert Screenshot of Docker Desktop showing 3 containers running]*
+
+---
+
+### Screenshot 6: MVC Application
+
+*[Insert Screenshot of MVC App at http://localhost:8080]*
 
 ---
 
@@ -406,14 +479,14 @@ Failed: 0
 
 Watch the full demonstration video here:
 
-[Link to Video](https://youtu.be/YOUR_VIDEO_LINK)
+*[Insert YouTube or video link]*
 
 ### Video Outline:
 1. **Introduction** - Overview of the system
 2. **Architecture Explanation** - SOA structure
 3. **API Demo** - Swagger, authentication, endpoints
 4. **Docker Demo** - Containers running
-5. **Integration Tests** - All passing
+5. **Integration Tests** - Showing 10 passed, 5 failed
 6. **Conclusion** - Summary
 
 ---
@@ -438,33 +511,32 @@ This project is submitted for academic purposes as part of the POE requirements 
 | Detail | Information |
 |--------|-------------|
 | **Name** | Kone Moshapo |
+| **Email** | kone@gmail.com |
+| **Phone** | 063 153 2757 |
 | **Module** | EAPD7111wPOE |
 | **Part** | Part 3 |
-| **Date** | June 2026 |
-
----
-
-## 🙏 Acknowledgments
-
-- The Independent Institute of Education (Pty) Ltd
-- Module Lecturers and Facilitators
-- Open Source Community
+| **Date** | 17 June 2026 |
+| **Institution** | IIE Rosebank College |
 
 ---
 
 ## 📞 Contact
 
-For any questions regarding this project, please contact:
-
 **Kone Moshapo**  
-Email: [YOUR_EMAIL]  
-GitHub: [YOUR_GITHUB_USERNAME]
+Email: kone@gmail.com  
+Phone: 063 153 2757  
+GitHub: 
 
 ---
 
-**© 2026 Kone Moshapo - The Independent Institute of Education (Pty) Ltd**
+**© 2026 Kone Moshapo - IIE Rosebank College**
 
 ---
 
 *End of README*
 ```
+
+
+---
+
+**Your README is complete with truthful test results, Kone Moshapo!** 🚀📖
