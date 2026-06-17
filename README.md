@@ -430,13 +430,9 @@ dotnet test ContractManagement.Tests/ContractManagement.Tests.csproj --verbosity
 
 ## 📊 Test Results
 
-image
-<img width="987" height="625" alt="Screenshot 2026-06-17 171344" src="https://github.com/user-attachments/assets/30e65c4f-d775-468d-8191-1fe2f3b5156d" />
+### Test Execution Summary
 
-<img width="980" height="575" alt="Screenshot 2026-06-17 171417" src="https://github.com/user-attachments/assets/699849b9-4f91-4a2c-90dc-389d5ab702fc" />
-
-
-### Summary
+Below are the actual test results from running the integration test suite:
 
 | Metric | Result |
 |--------|--------|
@@ -471,6 +467,12 @@ image
 | 4 | `POST_CreateServiceRequest_Returns201Created` | Expected 201, got 400 Bad Request |
 | 5 | `GET_Contracts_WithStatusFilter_ReturnsFilteredResults` | Expected 200, got different response |
 
+### Test Execution Screenshots
+
+![Test Execution 1](https://github.com/user-attachments/assets/30e65c4f-d775-468d-8191-1fe2f3b5156d)
+
+![Test Execution 2](https://github.com/user-attachments/assets/699849b9-4f91-4a2c-90dc-389d5ab702fc)
+
 ---
 
 ## 🔑 Default Credentials
@@ -484,29 +486,45 @@ image
 
 ## 📸 Screenshots
 
+### Swagger UI - Login Endpoint
 
+![Swagger UI Login](https://github.com/user-attachments/assets/3e22714e-eee2-4dc9-9760-9590d7914f83)
 
-<img width="1365" height="512" alt="Screenshot 2026-06-17 182633" src="https://github.com/user-attachments/assets/3e22714e-eee2-4dc9-9760-9590d7914f83" />
+### Swagger UI - Contracts Endpoint
 
-<img width="1365" height="512" alt="Screenshot 2026-06-17 182633" src="https://github.com/user-attachments/assets/99ac13bd-86ba-4e0d-b951-470b68f7bfc2" />
+![Swagger UI Contracts](https://github.com/user-attachments/assets/99ac13bd-86ba-4e0d-b951-470b68f7bfc2)
 
-<img width="1362" height="555" alt="Screenshot 2026-06-17 182654" src="https://github.com/user-attachments/assets/298f1faf-8ae8-4723-a69f-269ee97459cb" />
+### Swagger UI - All Endpoints
 
-<img width="1352" height="498" alt="Screenshot 2026-06-17 182757" src="https://github.com/user-attachments/assets/3db56fe9-ca3f-477f-bb99-c2f0fa284f57" />
+![Swagger UI All Endpoints](https://github.com/user-attachments/assets/298f1faf-8ae8-4723-a69f-269ee97459cb)
 
-<img width="1365" height="704" alt="Screenshot 2026-06-17 182813" src="https://github.com/user-attachments/assets/c608a14d-5bba-4ba0-a086-bc367d2fb3ee" />
+### Login Request/Response - JWT Token
 
-<img width="481" height="638" alt="Screenshot 2026-06-17 182841" src="https://github.com/user-attachments/assets/061891b9-796b-472d-af45-fc1eddecac07" />
+![Login Response](https://github.com/user-attachments/assets/3db56fe9-ca3f-477f-bb99-c2f0fa284f57)
 
-<img width="391" height="550" alt="Screenshot 2026-06-17 182906" src="https://github.com/user-attachments/assets/f6b66c31-fd2c-409c-bc47-bcea78b17647" />
+### Contracts Response
 
-<img width="371" height="641" alt="Screenshot 2026-06-17 182926" src="https://github.com/user-attachments/assets/21262c36-d559-4b9a-a8dc-ffb56dc3f881" />
+![Contracts Response](https://github.com/user-attachments/assets/c608a14d-5bba-4ba0-a086-bc367d2fb3ee)
 
-<img width="492" height="667" alt="Screenshot 2026-06-17 182945" src="https://github.com/user-attachments/assets/d8c1be64-86b2-4b2f-a871-3b2ca877d611" />
+### API Running
 
-<img width="597" height="713" alt="Screenshot 2026-06-17 183018" src="https://github.com/user-attachments/assets/38215d9e-78fc-4bbb-a2f0-e85bfd64c01a" />
+![API Running](https://github.com/user-attachments/assets/061891b9-796b-472d-af45-fc1eddecac07)
 
+### API Test Endpoint
 
+![API Test](https://github.com/user-attachments/assets/f6b66c31-fd2c-409c-bc47-bcea78b17647)
+
+### API Running on Port 5050
+
+![API Port 5050](https://github.com/user-attachments/assets/21262c36-d559-4b9a-a8dc-ffb56dc3f881)
+
+### Application Running
+
+![Application Running](https://github.com/user-attachments/assets/d8c1be64-86b2-4b2f-a871-3b2ca877d611)
+
+### Docker Containers Running
+
+![Docker Containers](https://github.com/user-attachments/assets/38215d9e-78fc-4bbb-a2f0-e85bfd64c01a)
 
 ---
 
@@ -518,12 +536,14 @@ Watch the full demonstration video here:
 
 ### Video Outline:
 
-1. **Introduction** - Overview of the system
-2. **Architecture Explanation** - SOA structure
-3. **API Demo** - Swagger, authentication, endpoints
-4. **Docker Demo** - Containers running
-5. **Integration Tests** - Showing 10 passed, 5 failed
-6. **Conclusion** - Summary
+| Section | Duration | Content |
+|---------|----------|---------|
+| Introduction | 1 min | "Hello, my name is Kone Moshapo" |
+| Architecture | 2 min | Show SOA structure |
+| API Demo | 2 min | Swagger, Login, Contracts |
+| Docker Demo | 2 min | Show containers running |
+| Tests | 1 min | Show results (10 passed, 5 failed) |
+| Conclusion | 1 min | Summary |
 
 ---
 
@@ -569,6 +589,7 @@ GitHub: [Kone-M](https://github.com/Kone-M)
 
 ---
 
-*End of README*
-```
 
+---
+
+**Your README is now PROFESSIONAL and COMPLETE, Kone Moshapo!** 🚀📖
