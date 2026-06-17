@@ -1,0 +1,198 @@
+﻿@model ContractManagementSystem.Models.Client
+
+@{
+    ViewData["Title"] = "Client Details";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>
+            <i class="fas fa-building"></i> Client Details
+        </h1>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                <i class="fas fa-edit"></i> Edit
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to List
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-address-card"></i> Client Information</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd class="col-sm-8">
+                            <h4>@Html.DisplayFor(model => model.Name)</h4>
+                        </dd>
+
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Email)
+                        </dt>
+                        <dd class="col-sm-8">
+                            <a href="mailto:@Model.Email">
+                                <i class="fas fa-envelope"></i> @Html.DisplayFor(model => model.Email)
+                            </a>
+                        </dd>
+
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </dt>
+                        <dd class="col-sm-8">
+                            <a href="tel:@Model.Phone">
+                                <i class="fas fa-phone"></i> @Html.DisplayFor(model => model.Phone)
+                            </a>
+                        </dd>
+
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Address)
+                        </dt>
+                        <dd class="col-sm-8">
+                            <i class="fas fa-map-marker-alt"></i> @Html.DisplayFor(model => model.Address)
+                        </dd>
+
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Region)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @{
+                                var regionClass = Model.Region switch
+                                {
+                                    "North America" => "badge bg-primary",
+                                    "Europe" => "badge bg-success",
+                                    "Asia Pacific" => "badge bg-warning",
+                                    _ => "badge bg-secondary"
+                                };
+                            }
+                            <span class="@regionClass" style="font-size: 1rem;">@Model.Region</span>
+                        </dd>
+
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.CreatedAt)
+                        </dt>
+                        <dd class="col-sm-8">
+                            <i class="fas fa-calendar"></i> @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-chart-bar"></i> Statistics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body text-center">
+                                    <h3 class="card-title text-primary">@Model.TotalContractsCount</h3>
+                                    <p class="card-text">Total Contracts</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body text-center">
+                                    <h3 class="card-title text-success">@Model.ActiveContractsCount</h3>
+                                    <p class="card-text">Active Contracts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-file-contract"></i> Contracts</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.Contracts != null && Model.Contracts.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-sm table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Contract Period</th>
+                                        <th>Service Level</th>
+                                        <th>Status</th>
+                                        <th>Service Requests</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var contract in Model.Contracts)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <small>
+                                                    @contract.StartDate.ToString("yyyy-MM-dd")<br />
+                                                    <strong>to</strong><br />
+                                                    @contract.EndDate.ToString("yyyy-MM-dd")
+                                                </small>
+                                            </td>
+                                            <td>
+                                                @if (contract.ServiceLevel == ContractManagementSystem.Models.ServiceLevel.Enterprise)
+                                                {
+                                                    <span class="badge bg-danger">Enterprise</span>
+                                                }
+                                                else if (contract.ServiceLevel == ContractManagementSystem.Models.ServiceLevel.Premium)
+                                                {
+                                                    <span class="badge bg-warning">Premium</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-info">@contract.ServiceLevel</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (contract.IsActive)
+                                                {
+                                                    <span class="badge bg-success">Active</span>
+                                                }
+                                                else if (contract.Status == ContractManagementSystem.Models.ContractStatus.Expired)
+                                                {
+                                                    <span class="badge bg-secondary">Expired</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-secondary">@contract.Status</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-primary rounded-pill">@contract.ServiceRequestCount</span>
+                                            </td>
+                                            <td>
+                                                <a asp-controller="Contracts" asp-action="Details" asp-route-id="@contract.Id" class="btn btn-sm btn-info">
+                                                    View
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i> No contracts found for this client.
+                            <a asp-controller="Contracts" asp-action="Create" class="alert-link">Create a contract</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

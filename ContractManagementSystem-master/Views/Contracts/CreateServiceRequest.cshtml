@@ -1,0 +1,79 @@
+﻿@model ContractManagementSystem.Models.ServiceRequest
+
+@{
+    ViewData["Title"] = "Create Service Request";
+    var contractInfo = ViewBag.ContractInfo as ContractManagementSystem.Models.Contract;
+}
+
+<div class="container">
+    <h1>Create Service Request</h1>
+    <hr />
+
+    @if (contractInfo != null)
+    {
+        <div class="alert alert-info">
+            <strong>Contract:</strong> @contractInfo.Client?.Name - @contractInfo.ServiceLevel Level<br />
+            <strong>Status:</strong> @contractInfo.Status | <strong>Period:</strong> @contractInfo.ContractPeriod
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-8">
+            <form asp-action="CreateServiceRequest">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <input type="hidden" asp-for="ContractId" />
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label"></label>
+                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Describe the service request in detail..."></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Cost" class="form-label"></label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input asp-for="Cost" class="form-control" placeholder="0.00" />
+                    </div>
+                    <span asp-validation-for="Cost" class="text-danger"></span>
+                    <div class="form-text">Cost in USD. Will be converted to ZAR automatically.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Status" class="form-label"></label>
+                    <select asp-for="Status" class="form-select" asp-items="Html.GetEnumSelectList<ContractManagementSystem.Models.RequestStatus>()"></select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Create Request</button>
+                    <a asp-action="Details" asp-route-id="@Model.ContractId" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h6 class="mb-0">Currency Information</h6>
+                </div>
+                <div class="card-body">
+                    <p><strong>Exchange Rate:</strong> 1 USD = 19.50 ZAR</p>
+                    <p><strong>Sample Conversion:</strong></p>
+                    <ul>
+                        <li>$100 USD = R1,950 ZAR</li>
+                        <li>$500 USD = R9,750 ZAR</li>
+                        <li>$1,000 USD = R19,500 ZAR</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

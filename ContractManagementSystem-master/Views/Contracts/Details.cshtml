@@ -1,0 +1,433 @@
+﻿@model ContractManagementSystem.Models.Contract
+
+@{
+    ViewData["Title"] = "Contract Details";
+}
+
+<style>
+    /* Professional Internal CSS for Details Page */
+    .detail-container {
+        padding: 20px;
+        background: #f8f9fc;
+        min-height: calc(100vh - 200px);
+    }
+
+    .page-header-modern {
+        background: white;
+        border-radius: 15px;
+        padding: 25px 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        border-left: 5px solid #0d6efd;
+    }
+
+    .info-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        margin-bottom: 25px;
+    }
+
+    .info-card-header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        padding: 15px 20px;
+        font-weight: 600;
+    }
+
+    .info-row {
+        display: flex;
+        padding: 12px 20px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .info-label {
+        width: 140px;
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .info-value {
+        flex: 1;
+        color: #212529;
+    }
+
+    /* Service Requests Table */
+    .requests-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .requests-table {
+        width: 100%;
+        margin: 0;
+    }
+
+        .requests-table thead th {
+            background: #f8f9fc;
+            color: #495057;
+            font-weight: 600;
+            padding: 15px;
+            border-bottom: 2px solid #dee2e6;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .requests-table tbody td {
+            padding: 15px;
+            vertical-align: middle;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .requests-table tbody tr:hover {
+            background: #f8f9fc;
+        }
+
+        .requests-table tfoot {
+            background: #f8f9fc;
+            font-weight: bold;
+        }
+
+            .requests-table tfoot td {
+                padding: 15px;
+                border-top: 2px solid #dee2e6;
+            }
+
+    .cost-usd {
+        color: #0d6efd;
+        font-weight: 600;
+    }
+
+    .cost-zar {
+        color: #198754;
+        font-weight: 600;
+    }
+
+    .total-row {
+        background: #e7f1ff;
+        font-weight: bold;
+    }
+
+    /* Status Badges for Requests */
+    .request-status {
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .status-open {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status-inprogress {
+        background: #cfe2ff;
+        color: #084298;
+    }
+
+    .status-completed {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .status-cancelled {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    /* Download Section */
+    .download-card {
+        background: linear-gradient(135deg, #f8f9fc, #e9ecef);
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .pdf-icon {
+        font-size: 4rem;
+        color: #dc3545;
+        margin-bottom: 15px;
+    }
+
+    .btn-download {
+        background: linear-gradient(135deg, #28a745, #218838);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 10px;
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s;
+    }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40,167,69,0.3);
+            color: white;
+        }
+
+    /* Empty State */
+    .empty-requests {
+        text-align: center;
+        padding: 50px;
+        color: #6c757d;
+    }
+
+    /* Responsive */
+    media (max-width: 768px) {
+        .info-row
+
+    {
+        flex-direction: column;
+    }
+
+    .info-label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .requests-table thead {
+        display: none;
+    }
+
+    .requests-table tbody td {
+        display: block;
+        padding: 10px 15px;
+    }
+
+    }
+</style>
+
+<div class="detail-container">
+    <!-- Header -->
+    <div class="page-header-modern">
+        <h1 style="margin: 0; color: #1e3c72;">
+            <i class="fas fa-file-contract" style="color: #0d6efd;"></i> Contract Details
+        </h1>
+        <p style="margin: 5px 0 0 0; color: #6c757d;">View complete contract information and service requests</p>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle"></i> @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle"></i> @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-7">
+            <!-- Contract Information Card -->
+            <div class="info-card">
+                <div class="info-card-header">
+                    <i class="fas fa-info-circle"></i> Contract Information
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Client Name:</div>
+                    <div class="info-value"><strong>@Model.Client?.Name</strong></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Email:</div>
+                    <div class="info-value">@Model.Client?.Email</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Phone:</div>
+                    <div class="info-value">@Model.Client?.Phone</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Region:</div>
+                    <div class="info-value">@Model.Client?.Region</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Start Date:</div>
+                    <div class="info-value">@Model.StartDate.ToString("dd MMMM yyyy")</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">End Date:</div>
+                    <div class="info-value">@Model.EndDate.ToString("dd MMMM yyyy")</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Duration:</div>
+                    <div class="info-value">@Model.DurationDays days</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Service Level:</div>
+                    <div class="info-value">
+                        @if (Model.ServiceLevel == ServiceLevel.Enterprise)
+                        {
+                            <span class="badge" style="background: linear-gradient(135deg, #6f42c1, #8b5cf6);">Enterprise</span>
+                        }
+                        else if (Model.ServiceLevel == ServiceLevel.Premium)
+                        {
+                            <span class="badge" style="background: linear-gradient(135deg, #fd7e14, #ffc107);">Premium</span>
+                        }
+                        else if (Model.ServiceLevel == ServiceLevel.Standard)
+                        {
+                            <span class="badge" style="background: #0dcaf0;">Standard</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Basic</span>
+                        }
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Status:</div>
+                    <div class="info-value">
+                        @if (Model.IsActive)
+                        {
+                            <span class="badge bg-success">Active</span>
+                        }
+                        else if (Model.Status == ContractStatus.Expired)
+                        {
+                            <span class="badge bg-secondary">Expired</span>
+                        }
+                        else if (Model.Status == ContractStatus.OnHold)
+                        {
+                            <span class="badge bg-warning">On Hold</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-info">Draft</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <!-- Download Section -->
+            <div class="download-card">
+                @if (!string.IsNullOrEmpty(Model.SignedAgreementFileName))
+                {
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <h5>Signed Agreement</h5>
+                    <p><strong>@Model.SignedAgreementFileName</strong></p>
+                    <p><small>Uploaded: @Model.CreatedAt.ToString("dd MMM yyyy")</small></p>
+                    <a asp-action="DownloadAgreement" asp-route-id="@Model.Id" class="btn-download">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                }
+                else
+                {
+                    <i class="fas fa-file-pdf pdf-icon" style="opacity: 0.3;"></i>
+                    <h5>No Agreement</h5>
+                    <p>No signed agreement uploaded yet.</p>
+                }
+            </div>
+
+            @if (Model.Status != ContractStatus.Expired && Model.Status != ContractStatus.OnHold)
+            {
+                <div class="info-card">
+                    <div class="info-card-header" style="background: linear-gradient(135deg, #28a745, #20c997);">
+                        <i class="fas fa-plus-circle"></i> Quick Action
+                    </div>
+                    <div class="text-center" style="padding: 20px;">
+                        <a asp-action="CreateServiceRequest" asp-route-contractId="@Model.Id" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Create New Service Request
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Service Requests Section -->
+    <div class="requests-card">
+        <div class="info-card-header" style="background: linear-gradient(135deg, #6c757d, #495057);">
+            <i class="fas fa-tasks"></i> Service Requests
+        </div>
+
+        @if (Model.ServiceRequests != null && Model.ServiceRequests.Any())
+        {
+            <div class="table-responsive">
+                <table class="requests-table">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th class="text-end">Cost (USD)</th>
+                            <th class="text-end">Cost (ZAR)</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Created Date</th>
+                    </thead>
+                    <tbody>
+                        @foreach (var request in Model.ServiceRequests)
+                        {
+                            <tr>
+                                <td>
+                                    <i class="fas fa-clipboard-list" style="color: #0d6efd;"></i>
+                                    <strong>@request.Description</strong>
+                                </td>
+                                <td class="text-end cost-usd">
+                                    $@request.CostUSD.ToString("N2")
+                                </td>
+                                <td class="text-end cost-zar">
+                                    R@request.CostZAR.ToString("N2")
+                                </td>
+                                <td class="text-center">
+                                    @{
+                                        var statusClass = request.Status == RequestStatus.Open ? "status-open" :
+                                        request.Status == RequestStatus.InProgress ? "status-inprogress" :
+                                        request.Status == RequestStatus.Completed ? "status-completed" : "status-cancelled";
+                                        var statusIcon = request.Status == RequestStatus.Open ? "fa-clock" :
+                                        request.Status == RequestStatus.InProgress ? "fa-spinner" :
+                                        request.Status == RequestStatus.Completed ? "fa-check-circle" : "fa-times-circle";
+                                    }
+                                    <span class="request-status @statusClass">
+                                        <i class="fas @statusIcon"></i> @request.Status
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <i class="fas fa-calendar-alt"></i> @request.CreatedAt.ToString("dd MMM yyyy")
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr class="total-row">
+                            <td>
+                                <strong><i class="fas fa-calculator"></i> Total</strong>
+                            </td>
+                            <td class="text-end">
+                                <strong>$@Model.TotalServiceCost.ToString("N2")</strong>
+                            </td>
+                            <td class="text-end">
+                                <strong>R@((Model.TotalServiceCost * 19.5m).ToString("N2"))</strong>
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="empty-requests">
+                <i class="fas fa-inbox" style="font-size: 3rem; color: #dee2e6;"></i>
+                <h5>No Service Requests</h5>
+                <p>No service requests have been created for this contract yet.</p>
+                @if (Model.Status != ContractStatus.Expired && Model.Status != ContractStatus.OnHold)
+                {
+                    <a asp-action="CreateServiceRequest" asp-route-contractId="@Model.Id" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Create First Request
+                    </a>
+                }
+            </div>
+        }
+    </div>
+</div>

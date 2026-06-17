@@ -1,0 +1,99 @@
+﻿@model IEnumerable<ContractManagementSystem.Models.Contract>
+
+@{
+    ViewData["Title"] = "Database View";
+}
+
+<style>
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .stat-db {
+        background: white;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .table-wrapper {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+
+    .db-table {
+        width: 100%;
+        font-size: 13px;
+    }
+
+        .db-table th {
+            background: #1e3c72;
+            color: white;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+        }
+
+        .db-table td {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+    .export-btn {
+        background: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        margin-left: 10px;
+    }
+</style>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1><i class="fas fa-database"></i> Database View</h1>
+        <div>
+            <a href="/Contracts/ExportToExcel" class="export-btn"><i class="fas fa-file-excel"></i> Export CSV</a>
+            <a href="/Contracts" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-db"><div class="stat-number">@ViewBag.TotalContracts</div><div>Total Contracts</div></div>
+        <div class="stat-db"><div class="stat-number">@ViewBag.TotalActive</div><div>Active</div></div>
+        <div class="stat-db"><div class="stat-number">@ViewBag.TotalServiceRequests</div><div>Service Requests</div></div>
+        <div class="stat-db"><div class="stat-number">@ViewBag.TotalRevenue?.ToString("C")</div><div>Total Revenue</div></div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="db-table">
+            <thead><tr><th>ID</th><th>Client</th><th>Email</th><th>Region</th><th>Start</th><th>End</th><th>Status</th><th>Level</th><th>PDF</th><th>Requests</th><th>Cost</th></tr></thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td>@c.Id</td>
+                        <td>@c.Client?.Name</td>
+                        <td>@c.Client?.Email</td>
+                        <td>@c.Client?.Region</td>
+                        <td>@c.StartDate.ToString("yyyy-MM-dd")</td>
+                        <td>@c.EndDate.ToString("yyyy-MM-dd")</td>
+                        <td>@c.Status</td>
+                        <td>@c.ServiceLevel</td>
+                        <td>@(string.IsNullOrEmpty(c.SignedAgreementFileName) ? "No" : "Yes")</td>
+                        <td>@c.ServiceRequestCount</td>
+                        <td>$@c.TotalServiceCost.ToString("N2")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
