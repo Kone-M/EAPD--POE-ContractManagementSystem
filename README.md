@@ -1,60 +1,66 @@
-# 📖 COMPLETE README.md FILE
 
-Here is the complete README with **truthful test results** (10 passed, 5 failed) and your student information:
-
----
-
-## 📋 README.md
-
-```markdown
-# Contract Management System - POE Part 3
+# 📄 Contract Management System - POE Part 3
 
 ## Service-Oriented Architecture, Containerization & Automated Testing
 
-**Student:** Kone Moshapo  
-**Student Email:** kone@gmail.com  
-**Student Phone:** 063 153 2757  
-**Module:** EAPD7111wPOE  
-**Institution:** IIE Rosebank College  
-**Date:** 17 June 2026  
+---
+
+### 👨‍🎓 Student Information
+
+| Detail | Information |
+|--------|-------------|
+| **Name** | Kone Moshapo |
+| **Student Email** | kone@gmail.com |
+| **Student Phone** | 063 153 2757 |
+| **Module** | EAPD7111wPOE |
+| **Part** | Part 3 |
+| **Date** | 17 June 2026 |
+| **Institution** | IIE Rosebank College |
 
 ---
 
 ## 📋 Table of Contents
 
-1. [Project Overview](#project-overview)
-2. [Architecture](#architecture)
-3. [Technologies Used](#technologies-used)
-4. [Project Structure](#project-structure)
-5. [API Endpoints](#api-endpoints)
-6. [Getting Started](#getting-started)
-7. [Docker Setup](#docker-setup)
-8. [Running Tests](#running-tests)
-9. [Test Results](#test-results)
-10. [Default Credentials](#default-credentials)
-11. [Screenshots](#screenshots)
-12. [Video Demonstration](#video-demonstration)
-13. [References](#references)
+1. [Project Overview](#-project-overview)
+2. [Architecture](#-architecture)
+3. [Technologies Used](#-technologies-used)
+4. [Project Structure](#-project-structure)
+5. [API Endpoints](#-api-endpoints)
+6. [Getting Started](#-getting-started)
+7. [Docker Setup](#-docker-setup)
+8. [Running Tests](#-running-tests)
+9. [Test Results](#-test-results)
+10. [Default Credentials](#-default-credentials)
+11. [Screenshots](#-screenshots)
+12. [Video Demonstration](#-video-demonstration)
+13. [References](#-references)
 
 ---
 
 ## 📌 Project Overview
 
-This project demonstrates the modernization of a Contract Management System from a monolithic MVC application to a **Service-Oriented Architecture (SOA)** with:
+This project demonstrates the modernization of a **Contract Management System** from a monolithic MVC application to a **Service-Oriented Architecture (SOA)**.
 
-- ✅ Decoupled Web API (Backend)
-- ✅ MVC Frontend (Presentation Layer)
-- ✅ JWT Authentication
-- ✅ Swagger/OpenAPI Documentation
-- ✅ Automated Integration Testing (10/15 passing)
-- ✅ Docker Containerization
+### ✅ Key Features
+
+| Feature | Status |
+|---------|--------|
+| Decoupled Web API (Backend) | ✅ Complete |
+| MVC Frontend (Presentation Layer) | ✅ Complete |
+| JWT Authentication | ✅ Complete |
+| Swagger/OpenAPI Documentation | ✅ Complete |
+| Automated Integration Testing | ✅ Complete (10/15 passing) |
+| Docker Containerization | ✅ Complete |
+
+### 🎯 System Capabilities
 
 The system allows users to:
-- Manage clients, contracts, and service requests
-- Authenticate using JWT tokens
-- Filter and search contracts
-- Approve or decline contract status
-- View contract statistics
+
+- ✅ Manage clients, contracts, and service requests
+- ✅ Authenticate using JWT tokens
+- ✅ Filter and search contracts
+- ✅ Approve or decline contract status
+- ✅ View contract statistics
 
 ---
 
@@ -63,41 +69,41 @@ The system allows users to:
 ### Service-Oriented Architecture (SOA)
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        Client Browser                           │
-│                        (User Interface)                         │
-└─────────────────────────┬───────────────────────────────────────┘
-                          │ HTTP/HTTPS
-                          ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                        MVC Frontend                             │
-│                     (Presentation Layer)                        │
-│  ┌───────────────────────────────────────────────────────────┐ │
-│  │          MVC Controllers (HttpClient calls)               │ │
-│  └───────────────────────────────────────────────────────────┘ │
-└─────────────────────────┬───────────────────────────────────────┘
-                          │ HTTP/HTTPS
-                          ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                        Web API Backend                          │
-│                      (Service Layer)                            │
-│  ┌───────────────────────────────────────────────────────────┐ │
-│  │          API Controllers (REST with JWT Auth)            │ │
-│  └───────────────────────────────────────────────────────────┘ │
-│  ┌───────────────────────────────────────────────────────────┐ │
-│  │          Service Layer / Repository Pattern               │ │
-│  │                (Business Logic)                           │ │
-│  └───────────────────────────────────────────────────────────┘ │
-└─────────────────────────┬───────────────────────────────────────┘
-                          │ SQL Connection
-                          ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                        SQL Server Database                      │
-│                        (Data Layer)                             │
-│  ┌───────────────────────────────────────────────────────────┐ │
-│  │      Tables: Clients, Contracts, ServiceRequests, Users   │ │
-│  └───────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           Client Browser                                    │
+│                         (User Interface)                                    │
+└─────────────────────────────────┬───────────────────────────────────────────┘
+                                  │ HTTP/HTTPS
+                                  ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            MVC Frontend                                     │
+│                         (Presentation Layer)                               │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │              MVC Controllers (HttpClient calls)                      │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────┬───────────────────────────────────────────┘
+                                  │ HTTP/HTTPS
+                                  ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            Web API Backend                                  │
+│                          (Service Layer)                                    │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │            API Controllers (REST with JWT Authentication)            │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │              Service Layer / Repository Pattern                      │ │
+│  │                    (Business Logic)                                  │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────┬───────────────────────────────────────────┘
+                                  │ SQL Connection
+                                  ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            SQL Server Database                              │
+│                            (Data Layer)                                     │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │          Tables: Clients, Contracts, ServiceRequests, Users          │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -106,10 +112,10 @@ The system allows users to:
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| .NET | 8.0 | Framework |
-| ASP.NET Core Web API | 8.0 | Backend API |
-| Entity Framework Core | 8.0 | Database Access |
-| JWT Bearer Authentication | 8.0 | Security |
+| .NET | 8.0 | Application Framework |
+| ASP.NET Core Web API | 8.0 | Backend API Development |
+| Entity Framework Core | 8.0 | Database Access & ORM |
+| JWT Bearer Authentication | 8.0 | API Security |
 | Swagger/OpenAPI | 6.5.0 | API Documentation |
 | NUnit | 4.0.1 | Testing Framework |
 | FluentAssertions | 6.12.0 | Test Assertions |
@@ -121,60 +127,97 @@ The system allows users to:
 ## 📂 Project Structure
 
 ```
-ContractManagementSystem-master/
+EAPD--POE-ContractManagementSystem/
 │
-├── ContractManagement.API/                    # Web API Project
+├── ContractManagement.API/                          # Web API Backend
 │   ├── Controllers/
-│   │   ├── AuthController.cs                 # JWT Authentication
-│   │   ├── ContractsController.cs            # Contract Management
-│   │   ├── ClientsController.cs              # Client Management
-│   │   └── ServiceRequestsController.cs      # Service Requests
-│   ├── Models/                                # Data Models
-│   ├── Data/                                  # Database Context
-│   ├── Repositories/                          # Repository Pattern
-│   ├── Services/                              # Business Logic
-│   ├── Program.cs                             # Application Entry
-│   └── appsettings.json                       # Configuration
+│   │   ├── AuthController.cs                       # JWT Authentication
+│   │   ├── ContractsController.cs                  # Contract Management
+│   │   ├── ClientsController.cs                    # Client Management
+│   │   └── ServiceRequestsController.cs            # Service Requests
+│   ├── Models/                                     # Data Models
+│   │   ├── Client.cs
+│   │   ├── Contract.cs
+│   │   ├── ServiceRequest.cs
+│   │   ├── User.cs
+│   │   └── AuthModels.cs
+│   ├── Data/                                       # Database Context
+│   │   └── ApplicationDbContext.cs
+│   ├── Repositories/                               # Repository Pattern
+│   │   ├── IContractRepository.cs
+│   │   └── ContractRepository.cs
+│   ├── Services/                                   # Business Logic
+│   │   ├── IAuthService.cs
+│   │   └── AuthService.cs
+│   ├── Program.cs                                  # Application Entry
+│   ├── appsettings.json                            # Configuration
+│   └── ContractManagement.API.csproj               # Project File
 │
-├── ContractManagementSystem-master/           # MVC Frontend
-│   ├── Controllers/                           # Updated to use API
-│   ├── Services/                              # ApiService (HttpClient)
-│   ├── Views/                                 # Razor Views
-│   └── Program.cs
+├── ContractManagementSystem-master/                # MVC Frontend
+│   ├── Controllers/                                # Updated to use API
+│   │   ├── ContractsController.cs
+│   │   └── ClientsController.cs
+│   ├── Services/                                   # HttpClient Service
+│   │   └── ApiService.cs
+│   ├── Views/                                      # Razor Views
+│   ├── Models/                                     # View Models
+│   ├── Program.cs                                  # Application Entry
+│   ├── appsettings.json                            # Configuration
+│   └── ContractManagementSystem.csproj             # Project File
 │
-├── ContractManagement.Tests/                  # Integration Tests
+├── ContractManagement.Tests/                       # Integration Tests
 │   └── Integration/
-│       └── ApiIntegrationTests.cs            # 15 Test Cases
+│       └── ApiIntegrationTests.cs                 # 15 Test Cases
 │
-├── Dockerfile.api                             # API Container
-├── Dockerfile.web                             # Web Container
-├── docker-compose.yml                         # Container Orchestration
-├── Technical_Reflection_Report.md             # Technical Report
-└── README.md                                  # This File
+├── Dockerfile.api                                  # API Container
+├── Dockerfile.web                                  # Web Container
+├── docker-compose.yml                              # Container Orchestration
+├── Technical_Reflection_Report.md                  # Technical Report
+├── README.md                                       # This File
+└── ContractManagementSystem.sln                    # Solution File
 ```
 
 ---
 
 ## 🔧 API Endpoints
 
-| Method | Endpoint | Auth Required | Description |
-|--------|----------|---------------|-------------|
-| POST | `/api/auth/login` | ❌ No | Authenticate user & get JWT token |
+### Authentication
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/api/auth/login` | ❌ No | Authenticate & get JWT token |
+
+### Contracts
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
 | GET | `/api/contracts` | ✅ Yes | Get all contracts (with filters) |
 | GET | `/api/contracts/{id}` | ✅ Yes | Get contract by ID |
 | POST | `/api/contracts` | ✅ Yes | Create new contract |
 | PATCH | `/api/contracts/{id}/status` | ✅ Yes | Approve/Decline contract |
 | DELETE | `/api/contracts/{id}` | ✅ Yes | Delete contract |
 | GET | `/api/contracts/statistics` | ✅ Yes | Get contract statistics |
+
+### Clients
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
 | GET | `/api/clients` | ✅ Yes | Get all clients |
 | GET | `/api/clients/{id}` | ✅ Yes | Get client by ID |
 | POST | `/api/clients` | ✅ Yes | Create new client |
+
+### Service Requests
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/api/serviceRequests/contract/{contractId}` | ✅ Yes | Get requests by contract |
+| POST | `/api/serviceRequests` | ✅ Yes | Create service request |
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### 📋 Prerequisites
 
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/download)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) or [VS Code](https://code.visualstudio.com/)
@@ -187,12 +230,12 @@ ContractManagementSystem-master/
 
 #### Option A: Clone from GitHub
 ```bash
-git clone https://github.com/YOUR_USERNAME/ContractManagementSystem-POE-Part3.git
-cd ContractManagementSystem-POE-Part3
+git clone https://github.com/Kone-M/EAPD--POE-ContractManagementSystem.git
+cd EAPD--POE-ContractManagementSystem
 ```
 
 #### Option B: Download ZIP
-1. Go to: https://github.com/YOUR_USERNAME/ContractManagementSystem-POE-Part3
+1. Go to: https://github.com/Kone-M/EAPD--POE-ContractManagementSystem
 2. Click **"Code"** → **"Download ZIP"**
 3. Extract the ZIP file
 
@@ -374,7 +417,7 @@ docker-compose down -v
 
 ```bash
 # Navigate to solution folder
-cd ContractManagementSystem-POE-Part3
+cd EAPD--POE-ContractManagementSystem
 
 # Run all tests
 dotnet test ContractManagement.Tests/ContractManagement.Tests.csproj
@@ -386,6 +429,12 @@ dotnet test ContractManagement.Tests/ContractManagement.Tests.csproj --verbosity
 ---
 
 ## 📊 Test Results
+
+image
+<img width="987" height="625" alt="Screenshot 2026-06-17 171344" src="https://github.com/user-attachments/assets/30e65c4f-d775-468d-8191-1fe2f3b5156d" />
+
+<img width="980" height="575" alt="Screenshot 2026-06-17 171417" src="https://github.com/user-attachments/assets/699849b9-4f91-4a2c-90dc-389d5ab702fc" />
+
 
 ### Summary
 
@@ -401,26 +450,26 @@ dotnet test ContractManagement.Tests/ContractManagement.Tests.csproj --verbosity
 
 | # | Test Name | Status |
 |---|-----------|--------|
-| 1 | GET_Contracts_Returns200OK_AndNonNullData | ✅ PASS |
-| 2 | GET_Contracts_WithStatusFilter_ReturnsFilteredResults | ✅ PASS |
-| 3 | GET_ContractById_WithValidId_Returns200OK | ✅ PASS |
-| 4 | GET_ContractById_WithInvalidId_Returns404NotFound | ✅ PASS |
-| 5 | POST_CreateContract_Returns201Created_AndCanBeRetrieved | ✅ PASS |
-| 6 | POST_CreateContract_WithInvalidData_Returns400BadRequest | ✅ PASS |
-| 7 | PATCH_UpdateContractStatus_Returns204NoContent | ✅ PASS |
-| 8 | GET_Clients_Returns200OK_AndClientList | ✅ PASS |
-| 9 | Auth_LoginWithValidCredentials_ReturnsToken | ✅ PASS |
-| 10 | Unauthorized_AccessToProtectedEndpoint_Returns401Unauthorized | ✅ PASS |
+| 1 | `GET_Contracts_Returns200OK_AndNonNullData` | ✅ PASS |
+| 2 | `GET_Contracts_WithStatusFilter_ReturnsFilteredResults` | ✅ PASS |
+| 3 | `GET_ContractById_WithValidId_Returns200OK` | ✅ PASS |
+| 4 | `GET_ContractById_WithInvalidId_Returns404NotFound` | ✅ PASS |
+| 5 | `POST_CreateContract_Returns201Created_AndCanBeRetrieved` | ✅ PASS |
+| 6 | `POST_CreateContract_WithInvalidData_Returns400BadRequest` | ✅ PASS |
+| 7 | `PATCH_UpdateContractStatus_Returns204NoContent` | ✅ PASS |
+| 8 | `GET_Clients_Returns200OK_AndClientList` | ✅ PASS |
+| 9 | `Auth_LoginWithValidCredentials_ReturnsToken` | ✅ PASS |
+| 10 | `Unauthorized_AccessToProtectedEndpoint_Returns401Unauthorized` | ✅ PASS |
 
 ### ❌ Failing Tests (5) - Under Investigation
 
 | # | Test Name | Error |
 |---|-----------|-------|
-| 1 | Auth_LoginWithInvalidCredentials_Returns401Unauthorized | Expected 401, got different response |
-| 2 | GET_ContractStatistics_ReturnsValidData | Expected 200, got different response |
-| 3 | GET_TestEndpoint_Returns200OK | Expected 200, got different response |
-| 4 | POST_CreateServiceRequest_Returns201Created | Expected 201, got 400 Bad Request |
-| 5 | GET_Contracts_WithStatusFilter_ReturnsFilteredResults | Expected 200, got different response |
+| 1 | `Auth_LoginWithInvalidCredentials_Returns401Unauthorized` | Expected 401, got different response |
+| 2 | `GET_ContractStatistics_ReturnsValidData` | Expected 200, got different response |
+| 3 | `GET_TestEndpoint_Returns200OK` | Expected 200, got different response |
+| 4 | `POST_CreateServiceRequest_Returns201Created` | Expected 201, got 400 Bad Request |
+| 5 | `GET_Contracts_WithStatusFilter_ReturnsFilteredResults` | Expected 200, got different response |
 
 ---
 
@@ -435,43 +484,29 @@ dotnet test ContractManagement.Tests/ContractManagement.Tests.csproj --verbosity
 
 ## 📸 Screenshots
 
-> ⚠️ **IMPORTANT:** All screenshots below are placeholders. Replace them with your actual screenshots.
 
-### Screenshot 1: Swagger UI
 
-*[Insert Screenshot of Swagger UI showing all API endpoints]*
+<img width="1365" height="512" alt="Screenshot 2026-06-17 182633" src="https://github.com/user-attachments/assets/3e22714e-eee2-4dc9-9760-9590d7914f83" />
 
-**URL:** `http://localhost:5050/swagger/index.html`
+<img width="1365" height="512" alt="Screenshot 2026-06-17 182633" src="https://github.com/user-attachments/assets/99ac13bd-86ba-4e0d-b951-470b68f7bfc2" />
 
----
+<img width="1362" height="555" alt="Screenshot 2026-06-17 182654" src="https://github.com/user-attachments/assets/298f1faf-8ae8-4723-a69f-269ee97459cb" />
 
-### Screenshot 2: Login Request/Response
+<img width="1352" height="498" alt="Screenshot 2026-06-17 182757" src="https://github.com/user-attachments/assets/3db56fe9-ca3f-477f-bb99-c2f0fa284f57" />
 
-*[Insert Screenshot of POST /api/Auth/login showing JWT token response]*
+<img width="1365" height="704" alt="Screenshot 2026-06-17 182813" src="https://github.com/user-attachments/assets/c608a14d-5bba-4ba0-a086-bc367d2fb3ee" />
 
----
+<img width="481" height="638" alt="Screenshot 2026-06-17 182841" src="https://github.com/user-attachments/assets/061891b9-796b-472d-af45-fc1eddecac07" />
 
-### Screenshot 3: Contracts Response
+<img width="391" height="550" alt="Screenshot 2026-06-17 182906" src="https://github.com/user-attachments/assets/f6b66c31-fd2c-409c-bc47-bcea78b17647" />
 
-*[Insert Screenshot of GET /api/contracts showing contract data]*
+<img width="371" height="641" alt="Screenshot 2026-06-17 182926" src="https://github.com/user-attachments/assets/21262c36-d559-4b9a-a8dc-ffb56dc3f881" />
 
----
+<img width="492" height="667" alt="Screenshot 2026-06-17 182945" src="https://github.com/user-attachments/assets/d8c1be64-86b2-4b2f-a871-3b2ca877d611" />
 
-### Screenshot 4: Test Results
+<img width="597" height="713" alt="Screenshot 2026-06-17 183018" src="https://github.com/user-attachments/assets/38215d9e-78fc-4bbb-a2f0-e85bfd64c01a" />
 
-*[Insert Screenshot of test results showing 10 passed, 5 failed]*
 
----
-
-### Screenshot 5: Docker Containers Running
-
-*[Insert Screenshot of Docker Desktop showing 3 containers running]*
-
----
-
-### Screenshot 6: MVC Application
-
-*[Insert Screenshot of MVC App at http://localhost:8080]*
 
 ---
 
@@ -482,6 +517,7 @@ Watch the full demonstration video here:
 *[Insert YouTube or video link]*
 
 ### Video Outline:
+
 1. **Introduction** - Overview of the system
 2. **Architecture Explanation** - SOA structure
 3. **API Demo** - Swagger, authentication, endpoints
@@ -502,7 +538,7 @@ Watch the full demonstration video here:
 
 ## 📄 License
 
-This project is submitted for academic purposes as part of the POE requirements for the module EAPD7111wPOE.
+This project is submitted for academic purposes as part of the POE requirements for the module **EAPD7111wPOE**.
 
 ---
 
@@ -525,7 +561,7 @@ This project is submitted for academic purposes as part of the POE requirements 
 **Kone Moshapo**  
 Email: kone@gmail.com  
 Phone: 063 153 2757  
-GitHub: 
+GitHub: [Kone-M](https://github.com/Kone-M)
 
 ---
 
@@ -536,7 +572,3 @@ GitHub:
 *End of README*
 ```
 
-
----
-
-**Your README is complete with truthful test results, Kone Moshapo!** 🚀📖
